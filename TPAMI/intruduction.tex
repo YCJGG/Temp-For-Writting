@@ -1,8 +1,8 @@
 
 
+\IEEEraisesectionheading{\section{Introduction}\label{sec:introduction}}
 
-
-# p1
+%# p1
 {W}{ith} the prevalence of touchscreens in consumer electronics (ranging from portable devices to large home appliance),
  human-machine interactions in free-hand drawings are becoming evermore facilitated and promoted. 
  The input of sketches is a succinct, convenient and efficient means of for visually recording ideas, and can beat hundreds of words in some scenarios. 
@@ -10,7 +10,7 @@
   \cite{sketchanet}, sketch-based image retrieval(SBIR) \cite{SaavedraB10,2012sketchhash,Yu2016shoes,SangkloyBHH16,SongYSXH17,EitzHBA10},
   to sketch-image generation. 
 
-# p2 : 总述sketch research 存在的问题
+%# p2 : 总述sketch research 存在的问题
 
 Despite great progress made, problems concerning sketches are very challenging due to the facts that:(i)Free-hand sketches are inherently abstract and iconic.
 For SBIR and sketch-to-image generation, sketch domain and natural image domain are two distinctive domains with heterogeneous feature representations and distributions. The former is characterised by 
@@ -20,6 +20,16 @@ relevance in sufficient detail to bridge the domain gap. For sketch recognition,
 (iii) Sketch researches lack freely available sketch data. Compared with natural image based research whose million-scale datasets had been accessible for almost a decade, most existing 
 sketch-based research can only utilize sub-million level crowd-sourced sketch datasets.
 
-# p3 ：简述前人的工作和存在的问题
+%# p3 ：简述前人的工作和存在的问题
+To address above challenges, especially for SBIR, recent works attempt to employ cross-view learning methods \cite{SaavedraB10,EitzHBA10,LiuSSLS17,SaavedraB15,hu2010,ParuiM14,dalal2005,hu2010_1,Saavedra14,Lowe99}.
+These deep models aim to reduce the domain discrepancy by embedding both sketches and natural images into a common space and use the projected features for retrieval.
+Concretely, multi-branch deep convolutional neural networks (CNNs) are utilized where each branch corresponds to one domain and the final weight-shared layer embeds them into a common
+subspace which is guided by pairwise contrastive loss or triplet ranking loss.
+The most critical deficiency in this line of approaches is the difficulty in capturing all the domain-invariant information with focusing only on discriminative losses.
+Thus, with the not well-bridged domain gap, these models generalize poorly especially for categories with large variance. 
+Besides, the query time of these real-valued methods grows exponentially with the database size and dimensions of sketch/image representations. To this end, Deep Sketch Hashing 
+(DSH) \cite{LiuSSLS17} is introduced to replace full-precision sketch/image representations with binary vectors. However, the quantization error introduced 
+ by the binarization procedure can destroy both domain-invariant information and semantic consistency across domains. 
 
-#p4 : 简述本文的工作和解决的问题
+
+%#p4 : 简述本文的工作和解决的问题
