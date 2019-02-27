@@ -38,8 +38,10 @@ very difficult to be trained without sophisticated and heavy data augmentation.
 
 %#p4 : 简述本文的工作和解决的问题
 
-In this work,our primary goal is to overcome the limitations of the aforementioned methods and provide a practical solution to the scalable SBIR and sketch recognition problems.
-We propose a Generative Domain-migration Hashing (GDH) method that improves generalization capabilities by migrating sketches into the natural image domain, 
+In this work,our primary goal is to overcome the limitations of the aforementioned methods and provide a practical 
+solution to the scalable SBIR and sketch recognition problems.
+We propose a Generative Domain-migration Hashing (GDH) method that improves generalization capabilities 
+by migrating sketches into the natural image domain, 
 where the distribution of migrated sketches is indistinguishable from the distribution of the natural images. Additionally, 
 we introduce an end-to-end multi-task learning framework that jointly optimizes 
 the cycle consistent migration as well as the hash codes, where the adversarial 
@@ -62,4 +64,36 @@ between sketches and natural images. Additionally, a weighted triplet ranking lo
 to enhance the fine-grained learning based on visual similarities between intra-class instances.
 The pipeline of the proposed GDH method for both category-level and fine-grained SBIR tasks
 is illustrated in Fig. \ref{fig:overview}. 
+Extensive experiments using various large-scale datasets for three tasks (category-level SBIR,
+fine-grained SBIR and recognition) demonstrate the consistent, overall superiority
+of GDH in terms of memory cost, time cost and retrieval/recognition accuracy. 
+The main contributions of this work are as follows:
+
+  \begin{itemize}
+  \item 
+  
+    we propose the first cycle attention generative model GDH for the hashing-based SBIR problem. 
+    Compared to existing methods, the generative model fundamentally improves
+    generalization capability by migrating sketches into their indistinguishable counterparts 
+    in the natural image domain.
+  
+  \item Guided by an adversarial loss and a cycle consistency loss, 
+  the optimized binary hash codes preserve semantic consistency 
+  across domains. Furthermore, training GDH does not require pixel-level 
+  alignment across domains, and thus enables generalized and practical applications.
+
+  \item 
+  GDH shows improved category-level SBIR performance over the state-of-the-art 
+  hashing-based SBIR method DSH \cite{LiuSSLS17} by up to $20.5\%$ for the TU-Berlin 
+  Extension dataset, and up to $26.4\%$ for the Sketchy dataset. In addition, 
+  GDH achieves comparable performance with real-valued fine-grained SBIR methods, while 
+  significantly reducing the retrieval time and memory cost with binary codes. 
+
+  \item
+  The domain-migration strategy improves sketch recognition performance over
+  state-of-the-art method without data augmentation on the TU-Berlin dataset. 
+  Meanwhile, it also surpasses human performance in sketch recognition.
+  
+ \end{itemize}
+
 
