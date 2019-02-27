@@ -1,0 +1,47 @@
+\section{Related Work}
+In this section, we discuss the following four directions of related works. 
+
+\noindent\textbf{Category-level SBIR:} The majority of existing category-level SBIR methods \cite{SaavedraB10,EitzHBA10,LiuSSLS17,SaavedraB15,hu2010,ParuiM14,dalal2005,hu2010_1,Saavedra14,Lowe99,LiHSG14} 
+rely on learning a common feature space for both sketches and natural images. A bag-of-words (BOW) representation combined with some form of edge 
+detection from photograph is often employed to bridge the domain gap. 
+However, learning such a common feature space through such means is still difficult to capture all the domain-invariant information, which results in poor generalization.
+
+\noindent\textbf{Hashing-based SBIR:} If the learned common feature space is real-valued, 
+then the retrieval time depends on the database size, 
+and the scalability of the algorithms can consequently be restrained. 
+In order to to improve the efficiency, 
+hashing-based methods \cite{DH15cvpr,liu2014discrete,KSH2012,shen2015supervised,SH08,zhang2016efficient,shen2017tmm,qin2017action,liu2017coding} 
+are introduced to solve the SBIR problem. 
+The state-of-the-art hashing-based SBIR method DSH \cite{liu2017coding} employs end-to-end semi-heterogeneous CNNs 
+to learn binarized hashing codes for retrieval. 
+However, the generalization issue persists in DSH since the learned semi-heterogeneous CNNs are also non-linear mappings across the two domains.
+
+
+\noindent\textbf{Generative Adversarial Networks:} The success of Generative Adversarial Networks (GANs) \cite{goodfellow2014generative} in various 
+image generation \cite{denton2015deep,sketchygan} and representation learning \cite{mathieu2016disentangling} tasks is inspiring, 
+particularly with respect to their ability to migrate sketches into the natural image domain using the adversarial loss, 
+where the migrated sketches are indistinguishable from natural images.  
+Image-to-image translation methods \cite{sangkloy2017scribbler,pix2pix2017} can also serve this purpose and are capable of migrating sketches into natural images.
+However, the pixel-level alignment between each sketch and image pair required for training is impractical. 
+To address this issue,  Zhu et al. \cite{ZhuPIE17} introduced a cycle consistency loss. 
+In this work, we employ such a cycle consistency loss and force the bidirectional mappings to be consistent with each other. 
+Benefiting from the highly under-constrained cycled learning, 
+sketches can be migrated to their indistinguishable counterparts in the natural image domain. 
+
+
+\noindent\textbf{Fine-grained SBIR:} Among a limited number of fine-grained SBIR methods \cite{Yu2016shoes,SangkloyBHH16,SongYSXH17,BuiRPC16,XuYHSMWXKG18,LiPSHZH16,QiSZL16,XuYQSMWG16,LiPSHXZ17}, Yu et al. \cite{Yu2016shoes} proposed multi-branch network with triplet ranking loss, which preserves the visual similarities between intra-class sketch and natural image. In our work, we also exploit the triplet ranking loss for preserving the visual similarity of intra-class instances. 
+In this case, the triplet inputs
+contain a sketch, a hard positive image corresponding to the sketch and a negative dissimilar image for the sketch.
+With improved generalization capability for the test data and the binarized hashing codes, the proposed GDH method achieves comparable performance to \cite{Yu2016shoes} for the fine-grained SBIR task, while requiring much less memory and retrieval time. 
+
+\noindent\textbf{Sketch Recognition:} Most existing methods\cite{EitzHA12,SimonyanZ14a} use hand-crafted
+features and SVM classifier. The only difference is which features
+extracted from natural images are used as representations. Recently, \cite{sketchanet}
+proposed a deep architecture specifically designed for recognition task, which achieved above-human accuracy(74.9\% vs. 73.1\% on the TU-Berlin dataset).
+However, with insufficient sketch data, such a method requires sophisticated and heavy data augmentation, making the training process time-consuming and difficult to converge.
+
+
+
+An early preliminary version of this work was published
+in \cite{GDH}. Compared to the earlier version, there are a number of
+modifications in the current methods.
